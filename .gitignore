@@ -1,1 +1,6 @@
 .venv
+
+# Data files
+train.csv
+test.csv
+*.csv
