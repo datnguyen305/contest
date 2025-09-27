@@ -88,6 +88,13 @@ if __name__ == "__main__":
     results_df.to_csv("model_f1_results.csv", index=False)
     print("\nKết quả đã được lưu vào model_f1_results.csv")
 
+    #Lưu trọng số mô hình tốt nhất, vào file best_model.pkl
+    best_model_name = results_df.loc[results_df["Mean_F1"].idxmax(), "Model"]
+    best_model = dict(models)[best_model_name]
+    import joblib
+    joblib.dump(best_model, "best_model.pkl")
+    
+
     # Trực quan hóa kết quả
     plt.figure(figsize=(12,6))
     plt.bar(results_df["Model"], results_df["Mean_F1"], color='skyblue')
